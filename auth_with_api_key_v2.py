@@ -1,9 +1,12 @@
+import os
 
 from google.cloud import api_keys_v2
 from google.cloud.api_keys_v2 import Key
+from dotenv import load_dotenv
 
 
 def create_api_key(project_id: str, suffix: str) -> Key:
+
     """
     Creates and restrict an API key. Add the suffix for uniqueness.
 
@@ -36,3 +39,13 @@ def create_api_key(project_id: str, suffix: str) -> Key:
     # For authenticating with the API key, use the value in "response.key_string".
     # To restrict the usage of this API key, use the value in "response.name".
     return response
+
+
+def main():
+    load_dotenv()
+    project_id = os.environ.get('PROJECT_ID')
+    create_api_key(project_id, 'my_key')
+
+
+if __name__ == '__main__':
+    main()
