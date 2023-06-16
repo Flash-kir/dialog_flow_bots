@@ -1,8 +1,4 @@
-import os
-import json
-
 from google.cloud import dialogflow
-from dotenv import load_dotenv
 
 
 def create_intent(project_id, display_name, training_phrases_parts, message_texts):
@@ -17,7 +13,6 @@ def create_intent(project_id, display_name, training_phrases_parts, message_text
         part = dialogflow.Intent.TrainingPhrase.Part(
             text=training_phrases_part
         )
-        # Here we create a new training phrase for each provided part.
         training_phrase = dialogflow.Intent.TrainingPhrase(parts=[part])
         training_phrases.append(training_phrase)
 
@@ -30,19 +25,15 @@ def create_intent(project_id, display_name, training_phrases_parts, message_text
         messages=[message]
     )
 
-    response = intents_client.create_intent(
+    intents_client.create_intent(
         request={"parent": parent, "intent": intent}
     )
-
-    print("Intent created: {}".format(response))
 
 
 def detect_intent_texts(project_id, session_id, texts, language_code='ru'):
     session_client = dialogflow.SessionsClient()
 
     session = session_client.session_path(project_id, session_id)
-
-    print("Session path: {}\n".format(session))
 
     for text in texts:
         text_input = dialogflow.TextInput(
@@ -59,19 +50,4 @@ def detect_intent_texts(project_id, session_id, texts, language_code='ru'):
             return response.query_result.fulfillment_text
         else:
             return None
-
-
-def load_questions(project_id, path):
-    with open(path, "r") as my_file:
-        questions_json = my_file.read()
-
-    questions = json.loads(questions_json)
-
-    for intent_name in questions.keys():
-        intent = questions[intent_name]
-        create_intent(
-            project_id,
-            intent_name,
-            intent['questions'],
-            [intent['answer']],
-        )
+            

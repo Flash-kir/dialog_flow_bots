@@ -9,7 +9,7 @@ from telegram.ext import (
     Filters
 )
 from dotenv import load_dotenv
-from dialog_flow_utils import load_questions, detect_intent_texts
+from dialog_flow_utils import detect_intent_texts
 
 
 def start(update: Update, context: CallbackContext):
@@ -32,9 +32,6 @@ def bot_answer(update: Update, context: CallbackContext):
 def main():
     load_dotenv()
     telegram_bot_token = os.environ.get('TELEGRAM_BOT_TOKEN')
-
-#    load_questions(quota_project_id, 'questions.json')
-#    print(create_api_key(quota_project_id, 'my_key'))
 
     updater = Updater(telegram_bot_token)
 

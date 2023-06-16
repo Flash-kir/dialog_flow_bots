@@ -1,11 +1,9 @@
 import os
-import json
 import random
 import vk_api as vk
 from vk_api.longpoll import VkLongPoll, VkEventType
 from dotenv import load_dotenv
-from google.cloud import dialogflow
-from dialog_flow_utils import load_questions, detect_intent_texts
+from dialog_flow_utils import detect_intent_texts
 
 
 def echo(event, vk_api):
@@ -19,7 +17,7 @@ def echo(event, vk_api):
         vk_api.messages.send(
             user_id=event.user_id,
             message=answer_text,
-            random_id=random.randint(1,1000)
+            random_id=random.randint(1, 1000)
         )
 
 
