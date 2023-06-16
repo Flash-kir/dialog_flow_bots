@@ -1,0 +1,9 @@
+# syntax=docker/dockerfile:1
+
+FROM python:3.6-slim
+WORKDIR /app
+COPY dialog_flow_utils.py .
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+COPY bot_vk.py .
+CMD ["python", "bot_vk.py"]

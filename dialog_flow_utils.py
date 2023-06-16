@@ -50,4 +50,3 @@ def detect_intent_texts(project_id, session_id, texts, language_code='ru'):
             return response.query_result.fulfillment_text
         else:
             return None
-            
