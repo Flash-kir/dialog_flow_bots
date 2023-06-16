@@ -25,7 +25,8 @@ def bot_answer(update: Update, context: CallbackContext):
                         update.effective_user,
                         message_text
     )
-    update.message.reply_text(answer_text)
+    if answer_text:
+        update.message.reply_text(answer_text)
 
 
 def main():
