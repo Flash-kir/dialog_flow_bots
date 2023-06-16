@@ -9,9 +9,15 @@ from dialog_flow_utils import load_questions, detect_intent_texts
 
 
 def echo(event, vk_api):
+    message_text = [event.text]
+    answer_text = detect_intent_texts(
+                        os.environ.get('PROJECT_ID'),
+                        event.user_id,
+                        message_text
+    )
     vk_api.messages.send(
         user_id=event.user_id,
-        message=event.text,
+        message=answer_text,
         random_id=random.randint(1,1000)
     )
 
