@@ -103,6 +103,7 @@ celerybeat.pid
 
 # Environments
 key.json
+keys.json
 .env copy
 .env
 .venv
