@@ -88,7 +88,7 @@ $ docker pull flashkir/bot-speaker-tm
 $ docker run -d --env-file {Полный путь до .env файла}.env --mount type=bind,source={Полный путь до key.json файла}/,target=/app flashkir/bot-speaker-tm
 ```
 
-Действующий бот запущен по [ссылке](@speaker_dvmn_bot).
+Имя действующего бота `@speaker_dvmn_bot`.
 
 ### бот vk
 
