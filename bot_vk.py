@@ -8,12 +8,12 @@ from dialog_flow_utils import detect_intent_texts
 
 def send_answer(event, vk_api):
     message_text = [event.text]
-    answer_text = detect_intent_texts(
+    (answer_text, find) = detect_intent_texts(
                         os.environ.get('PROJECT_ID'),
                         event.user_id,
                         message_text
     )
-    if answer_text:
+    if answer_text and find:
         vk_api.messages.send(
             user_id=event.user_id,
             message=answer_text,
