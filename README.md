@@ -62,58 +62,28 @@ $ python load_questions.py {путь до файла с тренировочны
 
 Для примера в корне проекта лежит файл `questions.json`, который содержит тренировочные фразы и ответы для бота.
 
-### бот telegram
+### Создание образа и запуск локально
 
-#### Создание образа и запуск локально
-
-Создайте образ, выполнив команду(команда выполняется в папке с файлом `bot_tm.py`):
+Создайте образ, выполнив команду(команда выполняется в папке с файлом `Dockerfile`):
 
 ```bash
-$ docker build -f Dockerfile-tm -t bot-speaker-tm .
+$ docker build -f Dockerfile -t bot-speaker .
 ```
+
+#### бот telegram
 
 Запустите его(команда выполняется в папке с файлом `bot_tm.py`):
 
 ```bash
-$ docker run -d --env-file {Полный путь до .env файла}.env --mount type=bind,source={Полный путь до key.json файла}/,target=/app flashkir/bot-speaker-tm
+$ docker run -d --env-file {Полный путь до .env файла}.env --mount type=bind,source={Полный путь до key.json файла}/,target=/app flashkir/bot-speaker "python" "bot_tm.py"
 ```
 
-#### Клонирование и запуск образа на сервере
-
-Создайте образ командой:
-
-```bash
-$ docker build -f Dockerfile-tm -t bot-speaker-tm .
-```
-
-либо получите его пул реквестом:
-
-```bash
-$ docker pull flashkir/bot-speaker-tm
-```
-
-Запустите его
-
-```bash
-$ docker run -d --env-file {Полный путь до .env файла}.env --mount type=bind,source={Полный путь до key.json файла}/,target=/app flashkir/bot-speaker-tm
-```
-
-Имя действующего бота `@speaker_dvmn_bot`.
-
-### бот vk
-
-#### Создание образа и запуск локально
-
-Создайте образ, выполнив команду(команда выполняется в папке с файлом `bot_vk.py`):
-
-```bash
-$ docker build -f Dockerfile-vk -t bot-speaker-vk .
-```
+#### бот telegram
 
 Запустите его(команда выполняется в папке с файлом `bot_vk.py`):
 
 ```bash
-$ docker run -d --env-file {Полный путь до .env файла}.env --mount type=bind,source={Полный путь до key.json файла}/,target=/app flashkir/bot-speaker-vk
+$ docker run -d --env-file {Полный путь до .env файла}.env --mount type=bind,source={Полный путь до key.json файла}/,target=/app flashkir/bot-speaker "python" "bot_vk.py"
 ```
 
 #### Клонирование и запуск образа на сервере
@@ -121,19 +91,31 @@ $ docker run -d --env-file {Полный путь до .env файла}.env --mo
 Создайте образ командой:
 
 ```bash
-$ docker build -f Dockerfile-vk -t bot-speaker-vk .
+$ docker build -f Dockerfile -t bot-speaker .
 ```
 
 либо получите его пул реквестом:
 
 ```bash
-$ docker pull flashkir/bot-speaker-vk
+$ docker pull flashkir/bot-speaker
 ```
 
-Запустите его
+#### бот telegram
+
+Запустите его(команда выполняется в папке с файлом `bot_tm.py`):
 
 ```bash
-$ docker run -d --env-file {Полный путь до .env файла}.env --mount type=bind,source={Полный путь до key.json файла}/,target=/app flashkir/bot-speaker-vk
+$ docker run -d --env-file {Полный путь до .env файла}.env --mount type=bind,source={Полный путь до key.json файла}/,target=/app flashkir/bot-speaker "python" "bot_tm.py"
+```
+
+Имя действующего бота `@speaker_dvmn_bot`.
+
+#### бот telegram
+
+Запустите его(команда выполняется в папке с файлом `bot_vk.py`):
+
+```bash
+$ docker run -d --env-file {Полный путь до .env файла}.env --mount type=bind,source={Полный путь до key.json файла}/,target=/app flashkir/bot-speaker "python" "bot_vk.py"
 ```
 
 Действующий бот запущен в группе ВК по [ссылке](https://vk.com/public221141443).
