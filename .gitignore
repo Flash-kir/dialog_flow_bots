@@ -130,3 +130,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+
+
+auth_with_api_key_v2.py
