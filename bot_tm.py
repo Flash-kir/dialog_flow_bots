@@ -18,7 +18,7 @@ def start(update: Update, context: CallbackContext):
     update.message.reply_text(f'Hi {user.username}, i\'am bot speaker!')
 
 
-def bot_answer(update: Update, context: CallbackContext):
+def send_answer(update: Update, context: CallbackContext):
     message_text = [update.message.text]
     answer_text = detect_intent_texts(
                         os.environ.get('PROJECT_ID'),
@@ -40,7 +40,7 @@ def main():
     dispatcher.add_handler(
         MessageHandler(
             Filters.text & ~Filters.command,
-            bot_answer
+            send_answer
         )
     )
 

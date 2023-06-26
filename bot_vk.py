@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 from dialog_flow_utils import detect_intent_texts
 
 
-def bot_answer(event, vk_api):
+def send_answer(event, vk_api):
     message_text = [event.text]
     answer_text = detect_intent_texts(
                         os.environ.get('PROJECT_ID'),
@@ -28,7 +28,7 @@ def main():
     longpoll = VkLongPoll(vk_session)
     for event in longpoll.listen():
         if event.type == VkEventType.MESSAGE_NEW and event.to_me:
-            bot_answer(event, vk_api)
+            send_answer(event, vk_api)
 
 
 if __name__ == '__main__':
